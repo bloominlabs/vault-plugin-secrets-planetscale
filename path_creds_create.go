@@ -88,9 +88,8 @@ func (b *backend) pathCredsRead(ctx context.Context, req *logical.Request, d *fr
 
 	// Use the helper to create the secret
 	resp := b.Secret(SecretTokenType).Response(map[string]interface{}{
-		"id": password.PublicID,
-		// TODO: update the planetscale client to get this dynamically
-		"host":         "us-west.connect.psdb.cloud",
+		"id":           password.PublicID,
+		"host":         password.Hostname,
 		"username":     password.Username,
 		"password":     password.PlainText,
 		"database":     roleEntry.Database,
